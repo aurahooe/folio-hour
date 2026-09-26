@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Folio — this hour’s reading room</title>
+    <meta name="description" content="A quiet public reading room. Write a slip. Keep it private, or pin it to the wall. Every hour a public slip is pulled to the front of the room." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="mast">
+      <a class="mark" href="#wall">Folio</a>
+      <p class="tick" id="tick">—</p>
+      <nav class="nav">
+        <button type="button" data-view="wall">Wall</button>
+        <button type="button" data-view="desk" id="deskBtn">Desk</button>
+        <button type="button" id="authBtn">Sign in</button>
+      </nav>
+    </header>
+    <main>
+      <section id="view-wall" class="view is-on">
+        <article class="hour-card" id="hourCard">
+          <p class="kicker">This hour</p>
+          <h1 id="hourTitle">The room is still setting type.</h1>
+          <p class="hour-body" id="hourBody">Public slips land on the wall. Every hour one of them is drawn to the front of the room.</p>
+          <p class="hour-meta" id="hourMeta"></p>
+        </article>
+        <div class="wall-head">
+          <h2>On the wall</h2>
+          <p>Only slips marked public appear here.</p>
+        </div>
+        <div id="wall" class="wall"></div>
+      </section>
+      <section id="view-desk" class="view">
+        <div class="desk">
+          <form id="slipForm" class="composer">
+            <label>
+              Title
+              <input id="slipTitle" maxlength="80" required placeholder="A short heading" />
+            </label>
+            <label>
+              The slip
+              <textarea id="slipBody" required maxlength="4000" rows="8" placeholder="Write something you would not mind leaving on a table."></textarea>
+            </label>
+            <label class="check">
+              <input type="checkbox" id="slipPublic" />
+              Mark public — show it on the wall
+            </label>
+            <button type="submit" class="ink">File this slip</button>
+            <p class="form-note" id="formNote"></p>
+          </form>
+          <aside>
+            <h2>Your drawer</h2>
+            <p class="muted">Private slips stay here. Public ones also hang on the wall.</p>
+            <div id="drawer"></div>
+          </aside>
+        </div>
+      </section>
+      <section id="view-auth" class="view">
+        <form id="authForm" class="auth-card">
+          <h2 id="authTitle">Come in</h2>
+          <p class="muted">Email and a password. We keep your slips.</p>
+          <label>
+            Display name
+            <input id="authName" maxlength="40" placeholder="What to print on the slip" />
+          </label>
+          <label>
+            Email
+            <input id="authEmail" type="email" required autocomplete="email" />
+          </label>
+          <label>
+            Password
+            <input id="authPass" type="password" required minlength="8" autocomplete="current-password" />
+          </label>
+          <div class="row">
+            <button type="submit" class="ink" id="authSubmit">Sign in</button>
+            <button type="button" class="ghost" id="authToggle">Need an account?</button>
+          </div>
+          <p class="form-note" id="authNote"></p>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>Folio turns the featured slip on the hour. Write privately if you like. Public is a choice.</p>
+    </footer>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
